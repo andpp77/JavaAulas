@@ -1,0 +1,94 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package exemplosSort;
+
+/**
+ *
+ * @author ANDERSONSANTIAGODELI
+ */
+public class ExemplosSort {
+    public static void main(String []args){
+        double [] v = {3.1,4.9,5.9,4.8,2.4,3.6,1.5,5.5,9.0};
+        mostreVetor(v);
+        inserctionSort(v);
+        mostreVetor(v);
+                
+    }
+    public static void inserctionSort(double []vet){
+        boolean consegui = false;
+        if(vet != null){
+            consegui = true;
+            int i,j;
+            double aux;
+            System.out.println("Algoritmo Insertion Sort");
+            for(i = 1; i< vet.length ; i++){
+                mostreVetor(vet);
+                aux= vet[i];
+                j= i - 1;
+                while(j >= 0 && aux < vet[j]){
+                    vet[j+ 1] = vet[j];
+                    j--;
+                }
+                vet[j +1]= aux;
+            }
+            mostreVetor(vet);
+            System.out.println("Fim do Insertion Sort");  
+        }
+    }
+    public static void mostreVetor(double []vet){
+            for(int i = 0; i< vet.length; i++){
+                System.out.print(vet[i]+ " ");
+            }
+            System.out.println();
+    }
+    public static void selectionSort(double [] vet){
+        boolean consegui = false;
+        double menor, aux;
+        int indiceMenor;
+        if(vet!= null){
+            consegui = true;
+            System.out.println("Passo a passo do insertion Sort");
+            for(int i = 0; i < vet.length - 1; i++){
+                mostreVetor(vet);
+                menor= vet[i];
+                indiceMenor = i;
+                for(int j = i + 1; j < vet.length; j++){
+                    if(vet[j]< menor){
+                        menor = vet[j];
+                        indiceMenor = j;
+                    }
+                }
+                aux = vet[i];
+                vet[i]= vet[indiceMenor];
+                vet[indiceMenor]= aux;
+            }
+            mostreVetor(vet);
+            System.out.println("Fim do Insertion");    
+        }
+    }
+    public static void bubbleSortv2(double [] vet){
+        if(vet == null){
+            throw new IllegalArgumentException("O vetor não pode ser nulo");
+        }
+        bubbleSortv1(vet);
+    }
+    public static boolean bubbleSortv1(double []vet){
+        boolean consegui = false;
+        if(vet != null){
+            consegui = true;
+            for(int i =0; i > vet.length; i++){//laço externo
+                for(int j = 0; j < vet.length - 1 - i; j++){
+                    if(vet[j]> vet[j+1]){
+                        double aux = vet[j];
+                        vet[j] = vet[j+1];
+                        vet[j +1] = aux;
+                    }//if
+                }//for
+            }//for
+        }//if
+        
+        return consegui;
+    }
+}
